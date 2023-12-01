@@ -1,5 +1,5 @@
-const ButtonDelete = () => {
-    return <button>DELETE</button>
+const ButtonDelete = ({ handleDelete }) => {
+    return <button onClick={handleDelete}>DELETE</button>
 }
 
 export default ButtonDelete;

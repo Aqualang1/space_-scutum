@@ -6,18 +6,18 @@ import { edit } from "../app/todosListSlice";
 
 const TodoList = () => {
 
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [todos, setTodos] = useState([]);
-    // const todos = useSelector((state) => state.todos);
+    // const [isLoaded, setIsLoaded] = useState(false);
+    // const [todos, setTodos] = useState([]);
+    const todos = useSelector((state) => state.todos);
 
-    useEffect(() => {
-        if (!isLoaded) {
-            getTodo()
-                .then(setTodos)
-                .catch(error => console.log(error))
-                .finally(() => setIsLoaded(true))
-        }
-    }, [isLoaded]);
+    // useEffect(() => {
+    //     if (!isLoaded) {
+    //         getTodo()
+    //             .then(setTodos)
+    //             .catch(error => console.log(error))
+    //             .finally(() => setIsLoaded(true))
+    //     }
+    // }, [isLoaded]);
 
     return <>{todos.map(todo =>
         <Todoitem

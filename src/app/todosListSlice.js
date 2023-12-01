@@ -2,9 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 import { mockTodos } from '../constants/constants'
 
 const initialState = {
-    todos: mockTodos,
+    todos: JSON.parse(mockTodos),
     itemsPerPage: 10
 }
+
 
 export const todosListSlice = createSlice({
     name: 'todoslist',
@@ -17,9 +18,16 @@ export const todosListSlice = createSlice({
             newTodos[editedTodoIndex] = action.payload;
             return { ...state, todos: newTodos };
         },
+        deleteTodo: (state, action) => {
+            const newTodos = [...state.todos];
+            const editedTodoIndex = newTodos.findIndex(el => el.id === action.payload.id);
+            // debugger;
+            newTodos.splice(editedTodoIndex, 1);
+            return { ...state, todos: newTodos };
+        }
     },
 })
 
-export const { edit } = todosListSlice.actions;
+export const { edit, deleteTodo } = todosListSlice.actions;
 
-export const reducer =  todosListSlice.reducer;
+export const reducer = todosListSlice.reducer;
