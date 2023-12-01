@@ -27,7 +27,6 @@ export const todosListSlice = createSlice({
     },
 })
 
-// Action creators are generated for each case reducer function
 export const { edit } = todosListSlice.actions;
 
 export const reducer =  todosListSlice.reducer;
