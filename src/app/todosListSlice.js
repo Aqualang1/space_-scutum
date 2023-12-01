@@ -6,7 +6,6 @@ const initialState = {
     itemsPerPage: 10
 }
 
-
 export const todosListSlice = createSlice({
     name: 'todoslist',
     initialState,
@@ -17,12 +16,6 @@ export const todosListSlice = createSlice({
             const editedTodoIndex = newTodos.findIndex(el => el.id === action.payload.id);
             newTodos[editedTodoIndex] = action.payload;
             return { ...state, todos: newTodos };
-        },
-        decrement: (state) => {
-            state.value -= 1
-        },
-        incrementByAmount: (state, action) => {
-            state.value += action.payload
         },
     },
 })

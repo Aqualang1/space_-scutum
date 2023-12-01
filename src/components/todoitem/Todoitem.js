@@ -7,11 +7,11 @@ import { edit } from "../../app/todosListSlice";
 const Todoitem = ({ todo }) => {
     const dispatch = useDispatch();
     const handleCompletedChange = () => {
-        dispatch(edit({ ...todo, completed: !todo.completed }));
+        dispatch(edit({ ...todo, completed: todo.completed }));
     }
 
     return <div className="todoitem">
-        <Checkbox  checked={todo.completed} handleCompletedChange={handleCompletedChange} />
+        <Checkbox checked={todo.completed} handleCompletedChange={handleCompletedChange} />
         <Input
             description={todo.title}
         />
