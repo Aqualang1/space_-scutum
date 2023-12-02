@@ -11,7 +11,7 @@ const Todoitem = ({ todo }) => {
     }
 
     const handleDelete = () => {
-        dispatch(deleteTodo( {todo} ))
+        dispatch(deleteTodo(todo))
     }
 
     return <div className="todoitem">
@@ -19,7 +19,7 @@ const Todoitem = ({ todo }) => {
         <Input
             description={todo.title}
         />
-        <ButtonDelete handleDelete={handleDelete}/>
+        <ButtonDelete handleDelete={handleDelete} />
     </div>
 }
 
