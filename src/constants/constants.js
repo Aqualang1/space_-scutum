@@ -1201,4 +1201,4 @@ export const mockTodos = [
     }
   ];
 
-  const countOptions = [10, 20, 30, 50]
+export const countOptions = [10, 20, 30, 50]

@@ -26,6 +26,7 @@ const AddForm = () => {
         event.preventDefault();
         const newTodo = generateTodo(value);
         dispatch(createTodo(newTodo));
+        setValue('');
     }
 
     return <form onSubmit={handleSubmit}>

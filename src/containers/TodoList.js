@@ -5,6 +5,7 @@ import { getTodo } from "../constants/api";
 import { edit } from "../app/todosListSlice";
 import AddForm from "../components/addForm/AddForm";
 import { startTransition } from "react";
+import TodoItemsPerPage from "../components/todoItemsPerPage/TodoItemsPerPage";
 
 const TodoList = () => {
 
@@ -23,7 +24,10 @@ const TodoList = () => {
             <Todoitem
                 todo={todo}
                 key={todo.id}
-            />)}</>
+            />)}
+
+        <TodoItemsPerPage />
+    </>
 
 
 }
