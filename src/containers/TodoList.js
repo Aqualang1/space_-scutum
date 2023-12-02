@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTodo } from "../constants/api";
 import { edit } from "../app/todosListSlice";
+import AddForm from "../components/addForm/AddForm";
 
 const TodoList = () => {
 
@@ -19,11 +20,14 @@ const TodoList = () => {
     //     }
     // }, [isLoaded]);
 
-    return <>{todos.map(todo =>
-        <Todoitem
-            todo={todo}
-            key={todo.id}
-        />)}</>
+    return <>
+        <AddForm />
+
+        {todos.map(todo =>
+            <Todoitem
+                todo={todo}
+                key={todo.id}
+            />)}</>
 
 
 }
