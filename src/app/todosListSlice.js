@@ -25,10 +25,14 @@ export const todosListSlice = createSlice({
             // debugger;
             newTodos.splice(editedTodoIndex, 1);
             return { ...state, todos: newTodos };
+        },
+        createTodo: (state, action) => {
+            const newTodos = [...state.todos, action.payload];
+            return { ...state, todos: newTodos };
         }
     },
 })
 
-export const { edit, deleteTodo } = todosListSlice.actions;
+export const { edit, deleteTodo, createTodo } = todosListSlice.actions;
 
 export const reducer = todosListSlice.reducer;
