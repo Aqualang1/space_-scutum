@@ -29,10 +29,15 @@ export const todosListSlice = createSlice({
         createTodo: (state, action) => {
             const newTodos = [...state.todos, action.payload];
             return { ...state, todos: newTodos };
+        },
+        changeItemsPerPage: (state, action) => {
+            const newItemsPerPage = action.payload;
+            console.log(newItemsPerPage);
+            return { ...state, itemsPerPage: newItemsPerPage };
         }
     },
 })
 
-export const { edit, deleteTodo, createTodo } = todosListSlice.actions;
+export const { edit, deleteTodo, createTodo, changeItemsPerPage } = todosListSlice.actions;
 
 export const reducer = todosListSlice.reducer;
