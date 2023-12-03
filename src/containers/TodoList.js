@@ -20,14 +20,10 @@ const TodoList = () => {
 
     const limitedTodos = todos.slice(quantity * (currentPage - 1), quantity * currentPage);
 
-    const handleChangeItemsPerPage = () => {
-        dispatch(changeItemsPerPage(itemsPerPage));
-        console.log(itemsPerPage);
+    const handleChangeItemsPerPage = (value) => {
+        dispatch(changeItemsPerPage(value));
         // quantity = itemsPerPage;
     }
-
-    const [itemsPerPage, setItemsPerPage] = useState(10);
-
 
     return <>
         <AddForm />
@@ -39,7 +35,7 @@ const TodoList = () => {
             />)}
 
         <TodoItemsPerPage
-            setItemsPerPage={(e) => {setItemsPerPage(e.target.value);handleChangeItemsPerPage();}}
+            setItemsPerPage={(e) => handleChangeItemsPerPage(e.target.value)}
             // handleChangeItemsPerPage={handleChangeItemsPerPage}
         />
     </>

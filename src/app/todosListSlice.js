@@ -32,7 +32,7 @@ export const todosListSlice = createSlice({
         },
         changeItemsPerPage: (state, action) => {
             const newItemsPerPage = action.payload;
-            console.log(newItemsPerPage);
+            // console.log(newItemsPerPage);
             return { ...state, itemsPerPage: newItemsPerPage };
         }
     },
