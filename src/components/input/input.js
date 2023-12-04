@@ -1,4 +1,4 @@
-const Input = ({ title, editMode, setTodoTitle }) => {
+const Input = ({ title, editMode, setTodoTitle, className }) => {
 
     const handleChange = ({ target }) => {
         setTodoTitle(target.value);
@@ -9,6 +9,7 @@ const Input = ({ title, editMode, setTodoTitle }) => {
         disabled={!editMode}
         value={title}
         onChange={handleChange}
+        className={className}
     ></input>
 }
 

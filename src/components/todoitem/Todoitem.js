@@ -1,3 +1,4 @@
+import './todoitem.css'
 import Input from "../input/input";
 import Checkbox from "../checkbox/Checkbox";
 import Button from "../button/Button";
@@ -23,7 +24,6 @@ const Todoitem = ({ todo }) => {
         if (editMode) {
             dispatch(editTodo({ ...todo, title: todoTitle }));
         }
-        // debugger;
     }
 
 
@@ -35,9 +35,9 @@ const Todoitem = ({ todo }) => {
             />
             <Input
                 title={todoTitle}
-                // setEditMode={setEditMode}
                 editMode={editMode}
                 setTodoTitle={setTodoTitle}
+                className={todo.completed ? 'done' : undefined}
             />
             <Button handler={handleDelete} title='DELETE' />
             <Button handler={handleEdit} title={editMode ? 'SAVE' : 'EDIT'} />
