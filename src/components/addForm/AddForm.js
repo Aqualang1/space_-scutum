@@ -2,8 +2,9 @@ import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { createTodo } from "../../app/todosListSlice";
 import { useDispatch } from "react-redux";
+import { createTodoAPI } from "../../constants/api";
 
-const AddForm = () => {
+const AddForm = ({setIsLoaded}) => {
 
     const [value, setValue] = useState('');
 
@@ -25,8 +26,12 @@ const AddForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const newTodo = generateTodo(value);
-        dispatch(createTodo(newTodo));
-        setValue('');
+        createTodoAPI(newTodo)
+            .then(() => dispatch(createTodo(newTodo)))
+            .then(setValue(''))
+            .catch(error => console.log(error))
+            .finally(() => setIsLoaded(false))
+
     }
 
     return <form onSubmit={handleSubmit}>

@@ -3,13 +3,13 @@ export const API_URL = 'https://64d8eebd5f9bf5b879ceb6cd.mockapi.io/tabs';
 export const getTodo = () =>
     fetch(API_URL).then(response => response.json());
 
-export const deleteTodo = (id) => {
+export const deleteTodoAPI = (id) => {
     return fetch(`${API_URL}/${id}`, {
         method: 'DELETE'
     }).then(response => response.json());
 }
 
-export const editTodo = (todo) => {
+export const editTodoAPI = (todo) => {
     return fetch(`${API_URL}/${todo.id}`, {
         method: 'PUT',
         headers: {
@@ -19,7 +19,7 @@ export const editTodo = (todo) => {
     }).then(response => response.json());
 }
 
-export const createTodo = (todo) => {
+export const createTodoAPI = (todo) => {
     return fetch(API_URL, {
         method: 'POST',
         headers: {

@@ -5,24 +5,36 @@ import Button from "../button/Button";
 import { useDispatch } from "react-redux";
 import { editTodo, deleteTodo } from "../../app/todosListSlice";
 import { useState } from "react";
+import { editTodoAPI, deleteTodoAPI, getTodo } from '../../constants/api';
 
-const Todoitem = ({ todo }) => {
+const Todoitem = ({ todo, setIsLoaded }) => {
     const dispatch = useDispatch();
     const [editMode, setEditMode] = useState(false);
     const [todoTitle, setTodoTitle] = useState(todo.title);
 
     const handleCompletedChange = () => {
-        dispatch(editTodo({ ...todo, completed: !todo.completed }));
+        const updatedToDo = { ...todo, completed: !todo.completed };
+        editTodoAPI(updatedToDo)
+            .then(() => dispatch(editTodo(updatedToDo)))
+            .catch(error => console.log(error))
+            .finally(() => setIsLoaded(false))
     }
 
     const handleDelete = () => {
-        dispatch(deleteTodo(todo))
+        deleteTodoAPI(todo.id)
+            .then(() => dispatch(deleteTodo(todo)))
+            .catch(error => console.log(error))
+            .finally(() => setIsLoaded(false))
     }
 
     const handleEdit = () => {
         setEditMode(!editMode);
         if (editMode) {
-            dispatch(editTodo({ ...todo, title: todoTitle }));
+            const updatedToDo = { ...todo, title: todoTitle };
+            editTodoAPI(updatedToDo)
+                .then(() => dispatch(editTodo(updatedToDo)))
+                .catch(error => console.log(error))
+                .finally(() => setIsLoaded(false))
         }
     }
 

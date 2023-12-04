@@ -3,11 +3,10 @@ import Todoitem from "../components/todoitem/Todoitem";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTodo } from "../constants/api";
-import { editTodo } from "../app/todosListSlice";
 import AddForm from "../components/addForm/AddForm";
 import { startTransition } from "react";
 import TodoItemsPerPage from "../components/todoItemsPerPage/TodoItemsPerPage";
-import { changeItemsPerPage, loadTodos } from "../app/todosListSlice";
+import { changeItemsPerPage, loadTodos, editTodo } from "../app/todosListSlice";
 import { calculatePagesAmount, getFilteredTodos } from "../helpers/paginationHelper";
 
 const TodoList = () => {
@@ -45,12 +44,15 @@ const TodoList = () => {
 
 
     return <>
-        <AddForm />
+        <AddForm
+            setIsLoaded={setIsLoaded}
+        />
 
         {filteredTodos.map(todo =>
             <Todoitem
                 todo={todo}
                 key={todo.id}
+                setIsLoaded={setIsLoaded}
             />)}
 
         <TodoItemsPerPage
