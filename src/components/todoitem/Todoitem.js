@@ -4,7 +4,7 @@ import Checkbox from "../checkbox/Checkbox";
 import Button from "../button/Button";
 import { useDispatch } from "react-redux";
 import { editTodo, deleteTodo } from "../../app/todosListSlice";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Todoitem = ({ todo }) => {
     const dispatch = useDispatch();
