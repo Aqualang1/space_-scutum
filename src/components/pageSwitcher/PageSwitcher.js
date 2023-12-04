@@ -9,11 +9,13 @@ const PageSwitcher = ({ currentPage, pagesAmount, setCurrentPage }) => {
         setCurrentPage(newCurrentPage);
     }
 
-    return <>
-        <button id={pageIds.prev} disabled={currentPage === 1} onClick={handleSwitch}>PREVIOUS</button>
-        <span>{currentPage}/{pagesAmount}</span>
-        <button id={pageIds.next} disabled={currentPage === pagesAmount} onClick={handleSwitch}>NEXT</button>
-    </>
+    return (
+        <>
+            <button id={pageIds.prev} disabled={currentPage === 1} onClick={handleSwitch}>PREVIOUS</button>
+            <span>{currentPage}/{pagesAmount}</span>
+            <button id={pageIds.next} disabled={currentPage === pagesAmount} onClick={handleSwitch}>NEXT</button>
+        </>
+    );
 }
 
 export default PageSwitcher;

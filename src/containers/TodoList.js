@@ -7,14 +7,26 @@ import { editTodo } from "../app/todosListSlice";
 import AddForm from "../components/addForm/AddForm";
 import { startTransition } from "react";
 import TodoItemsPerPage from "../components/todoItemsPerPage/TodoItemsPerPage";
-import { changeItemsPerPage } from "../app/todosListSlice";
+import { changeItemsPerPage, loadTodos } from "../app/todosListSlice";
 import { calculatePagesAmount, getFilteredTodos } from "../helpers/paginationHelper";
 
 const TodoList = () => {
 
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [todos, setTodos] = useState([]);
+    useEffect(() => {
+        if (!isLoaded) {
+            getTodo()
+                .then(setTodos)
+                .then(dispatch(loadTodos(todos)))
+                .catch(error => console.log(error))
+                .finally(() => setIsLoaded(true))
+        }
+    }, [isLoaded]);
+
     const dispatch = useDispatch();
 
-    const todos = useSelector((state) => state.todos);
+    // const todos = useSelector((state) => state.todos);
     const itemsPerPage = useSelector((state) => state.itemsPerPage);
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -54,14 +66,3 @@ export default TodoList;
 
 
 
-
-// const [isLoaded, setIsLoaded] = useState(false);
-// const [todos, setTodos] = useState([]);
-// useEffect(() => {
-//     if (!isLoaded) {
-//         getTodo()
-//             .then(setTodos)
-//             .catch(error => console.log(error))
-//             .finally(() => setIsLoaded(true))
-//     }
-// }, [isLoaded]);

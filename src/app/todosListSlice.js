@@ -12,7 +12,6 @@ export const todosListSlice = createSlice({
     initialState,
     reducers: {
         editTodo: (state, action) => {
-            // console.log(state);
             const newTodos = [...state.todos];
             const editedTodoIndex = newTodos.findIndex(el => el.id === action.payload.id);
             newTodos[editedTodoIndex] = action.payload;
@@ -20,9 +19,7 @@ export const todosListSlice = createSlice({
         },
         deleteTodo: (state, action) => {
             const newTodos = [...state.todos];
-            // console.log(action);
             const editedTodoIndex = newTodos.findIndex(el => el.id === action.payload.id);
-            // debugger;
             newTodos.splice(editedTodoIndex, 1);
             return { ...state, todos: newTodos };
         },
@@ -31,19 +28,14 @@ export const todosListSlice = createSlice({
             return { ...state, todos: newTodos };
         },
         changeItemsPerPage: (state, action) => {
-            // const newItemsPerPage = action.payload;
-            // console.log(newItemsPerPage);
             return { ...state, itemsPerPage: action.payload };
         },
-        // change: (state, action) => {
-        //     const newTodos = [...state.todos];
-        //     const editedTodoIndex = newTodos.findIndex(el => el.id === action.payload.id);
-        //     newTodos[editedTodoIndex] = action.payload;
-        //     return { ...state, todos: newTodos };
-        // }
+        loadTodos: (state, action) => {
+            return { ...state, todos: action.payload };
+        }
     },
 })
 
-export const { editTodo, deleteTodo, createTodo, changeItemsPerPage } = todosListSlice.actions;
+export const { editTodo, deleteTodo, createTodo, changeItemsPerPage, loadTodos } = todosListSlice.actions;
 
 export const reducer = todosListSlice.reducer;
