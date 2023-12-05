@@ -5,19 +5,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTodo } from "../constants/api";
 import AddForm from "../components/addForm/AddForm";
 import TodoItemsPerPage from "../components/todoItemsPerPage/TodoItemsPerPage";
-import { changeItemsPerPage, setTodos } from "../app/todosListSlice";
+import { changeItemsPerPage, dropTodos } from "../app/todosListSlice";
 import { calculatePagesAmount, getFilteredTodos } from "../helpers/paginationHelper";
-import './TodoList.css';
+import './todoList.css';
 
 const TodoList = () => {
 
     const [isLoaded, setIsLoaded] = useState(false);
-    // const [todos, setTodos] = useState([]);
-    const todos = useSelector((state) => state.todos);
+    const [todos, setTodos] = useState([]);
+    // const todos = useSelector((state) => state.todos);
     useEffect(() => {
         if (!isLoaded) {
             getTodo()
-                .then(() => dispatch(setTodos(todos)))
+                .then(setTodos)
+                .then(() => dispatch(dropTodos(todos)))
                 .catch(error => console.log(error))
                 .finally(() => setIsLoaded(true))
         }

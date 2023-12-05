@@ -40,7 +40,8 @@ const AddForm = ({ setIsLoaded }) => {
     return <form onSubmit={handleSubmit} className="addTodo">
         <label>
             Add todo:
-            <input type="text"
+            <input
+                type="text"
                 onChange={handleChange}
                 value={value}
             />
