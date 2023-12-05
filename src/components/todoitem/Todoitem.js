@@ -1,5 +1,5 @@
 import './todoitem.css'
-import Input from "../input/input";
+import Input from "../input/Input";
 import Checkbox from "../checkbox/Checkbox";
 import Button from "../button/Button";
 import { useDispatch } from "react-redux";
