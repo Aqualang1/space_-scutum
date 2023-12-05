@@ -20,7 +20,7 @@ export const todosListSlice = createSlice({
         deleteTodo: (state, action) => {
             const newTodos = [...state.todos];
             const editedTodoIndex = newTodos.findIndex(el => el.id === action.payload.id);
-            newTodos.splice(editedTodoIndex, 1);
+            newTodos.filter(editedTodoIndex, 1);
             return { ...state, todos: newTodos };
         },
         createTodo: (state, action) => {
