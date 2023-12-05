@@ -1,0 +1,25 @@
+.pageSwitcher {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+    border-bottom: 3em solid lightsteelblue;
+}
+
+.pageSwitcher>button {
+    color: darkslateblue;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid darkslateblue;
+    font-size: 25px;
+}
+
+.pageSwitcher>button:not([disabled]) {
+    cursor: pointer;
+    background: lightblue;
+}
+
+.pageSwitcher>button[disabled] {
+    background: lightslategray;
+    opacity: 30%;
+}

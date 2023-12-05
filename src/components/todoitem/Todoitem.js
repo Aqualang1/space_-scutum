@@ -5,7 +5,9 @@ import Button from "../button/Button";
 import { useDispatch } from "react-redux";
 import { editTodo, deleteTodo } from "../../app/todosListSlice";
 import { useState } from "react";
-import { editTodoAPI, deleteTodoAPI, getTodo } from '../../constants/api';
+import { editTodoAPI, deleteTodoAPI } from '../../constants/api';
+import { FiEdit, FiTrash2, FiSave } from "react-icons/fi";
+
 
 const Todoitem = ({ todo, setIsLoaded }) => {
     const dispatch = useDispatch();
@@ -44,15 +46,25 @@ const Todoitem = ({ todo, setIsLoaded }) => {
             <Checkbox
                 checked={todo.completed}
                 handleCompletedChange={handleCompletedChange}
+                editMode={editMode}
             />
             <Input
                 title={todoTitle}
                 editMode={editMode}
                 setTodoTitle={setTodoTitle}
                 className={todo.completed ? 'done' : undefined}
+                id="todoIput"
             />
-            <Button handler={handleDelete} title='DELETE' />
-            <Button handler={handleEdit} title={editMode ? 'SAVE' : 'EDIT'} />
+            <Button
+                handler={handleDelete}
+                title={<FiTrash2 />}
+                disabled={editMode}
+            />
+            <Button
+                handler={handleEdit}
+                title={editMode ? <FiSave /> : <FiEdit />}
+                disabled={todo.completed}
+            />
 
         </div>
     );

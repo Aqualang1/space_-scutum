@@ -1,4 +1,4 @@
-const Input = ({ title, editMode, setTodoTitle, className }) => {
+const Input = ({ title, editMode, setTodoTitle, className, id }) => {
 
     const handleChange = ({ target }) => {
         setTodoTitle(target.value);
@@ -10,6 +10,7 @@ const Input = ({ title, editMode, setTodoTitle, className }) => {
         value={title}
         onChange={handleChange}
         className={className}
+        id={id}
     ></input>
 }
 

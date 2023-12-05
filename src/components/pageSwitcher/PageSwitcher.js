@@ -1,4 +1,6 @@
 import { pageIds } from "../../constants/constants";
+import './pageSwitcher.css'
+
 
 const PageSwitcher = ({ currentPage, pagesAmount, setCurrentPage }) => {
 
@@ -10,11 +12,11 @@ const PageSwitcher = ({ currentPage, pagesAmount, setCurrentPage }) => {
     }
 
     return (
-        <>
+        <div className="pageSwitcher">
             <button id={pageIds.prev} disabled={currentPage === 1} onClick={handleSwitch}>PREVIOUS</button>
-            <span>{currentPage}/{pagesAmount}</span>
-            <button id={pageIds.next} disabled={currentPage === pagesAmount} onClick={handleSwitch}>NEXT</button>
-        </>
+            <span>Current page: {currentPage} from: {pagesAmount}</span>
+            <button id={pageIds.next} disabled={currentPage >= pagesAmount} onClick={handleSwitch}>NEXT</button>
+        </div>
     );
 }
 

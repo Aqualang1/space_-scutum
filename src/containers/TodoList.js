@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTodo } from "../constants/api";
 import AddForm from "../components/addForm/AddForm";
-import { startTransition } from "react";
 import TodoItemsPerPage from "../components/todoItemsPerPage/TodoItemsPerPage";
-import { changeItemsPerPage, loadTodos, editTodo } from "../app/todosListSlice";
+import { changeItemsPerPage, loadTodos } from "../app/todosListSlice";
 import { calculatePagesAmount, getFilteredTodos } from "../helpers/paginationHelper";
+import './TodoList.css';
 
 const TodoList = () => {
 
@@ -17,7 +17,7 @@ const TodoList = () => {
         if (!isLoaded) {
             getTodo()
                 .then(setTodos)
-                .then(dispatch(loadTodos(todos)))
+                .then(() => dispatch(loadTodos(todos)))
                 .catch(error => console.log(error))
                 .finally(() => setIsLoaded(true))
         }
@@ -43,7 +43,8 @@ const TodoList = () => {
     }
 
 
-    return <>
+    return <div className="todoList">
+
         <AddForm
             setIsLoaded={setIsLoaded}
         />
@@ -59,7 +60,7 @@ const TodoList = () => {
             setItemsPerPage={(e) => handleChangeItemsPerPage(e.target.value)}
         />
         <PageSwitcher currentPage={currentPage} pagesAmount={pagesAmount} setCurrentPage={setCurrentPage} />
-    </>
+    </div>
 
 
 }

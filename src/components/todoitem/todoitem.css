@@ -1,3 +1,42 @@
 .done {
     text-decoration-line: line-through;
 }
+
+.todoitem {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+#todoIput {
+    padding: 5px;
+    width: 70%;
+}
+
+.todoitem>button {
+    border-radius: 10px;
+    color: darkslateblue;
+    font-size: 2em;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.todoitem>button:not(:disabled) {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .todoitem {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #todoIput {
+        padding: 5px;
+        width: 100%;
+    }
+}

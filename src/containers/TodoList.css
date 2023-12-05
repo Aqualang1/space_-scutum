@@ -1,0 +1,21 @@
+.todoList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    text-align: center;
+}
+
+.todoList>select {
+    width: 90%;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: medium;
+    padding: 10px 0px;
+    margin: 10px 0px;
+    border-radius: 10px;
+    background: cornflowerblue;
+    border: 2px solid darkslateblue;
+}
