@@ -13,8 +13,9 @@
 #todoInput {
     padding: 5px;
     width: 70%;
-    background-color: darkgrey;
+    background-color: #FFC9FD;
     color: maroon;
+    border-radius: 4px
 }
 
 #todoInput:not(:disabled) {

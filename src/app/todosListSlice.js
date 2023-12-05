@@ -20,7 +20,7 @@ export const todosListSlice = createSlice({
         deleteTodo: (state, action) => {
             const newTodos = [...state.todos];
             const editedTodoIndex = newTodos.findIndex(el => el.id === action.payload.id);
-            newTodos.filter(editedTodoIndex, 1);
+            newTodos.splice(editedTodoIndex, 1);
             return { ...state, todos: newTodos };
         },
         createTodo: (state, action) => {
@@ -30,12 +30,12 @@ export const todosListSlice = createSlice({
         changeItemsPerPage: (state, action) => {
             return { ...state, itemsPerPage: action.payload };
         },
-        loadTodos: (state, action) => {
+        setTodos: (state, action) => {
             return { ...state, todos: action.payload };
         }
     },
 })
 
-export const { editTodo, deleteTodo, createTodo, changeItemsPerPage, loadTodos } = todosListSlice.actions;
+export const { editTodo, deleteTodo, createTodo, changeItemsPerPage, setTodos } = todosListSlice.actions;
 
 export const reducer = todosListSlice.reducer;
