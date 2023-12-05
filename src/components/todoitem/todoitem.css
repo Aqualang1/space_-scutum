@@ -10,9 +10,16 @@
     width: 100%;
 }
 
-#todoIput {
+#todoInput {
     padding: 5px;
     width: 70%;
+    background-color: darkgrey;
+    color: maroon;
+}
+
+#todoInput:not(:disabled) {
+    background-color: darkblue;
+    color: cornsilk;
 }
 
 .todoitem>button {
@@ -32,11 +39,14 @@
 @media only screen and (max-width: 600px) {
     .todoitem {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
     }
 
-    #todoIput {
+    #todoInput {
         padding: 5px;
-        width: 100%;
+        width: 80%;
+    }
+    .todoitem>button {
+        margin: 10px 0;
     }
 }

@@ -53,7 +53,7 @@ const Todoitem = ({ todo, setIsLoaded }) => {
                 editMode={editMode}
                 setTodoTitle={setTodoTitle}
                 className={todo.completed ? 'done' : undefined}
-                id="todoIput"
+                id="todoInput"
             />
             <Button
                 handler={handleDelete}
